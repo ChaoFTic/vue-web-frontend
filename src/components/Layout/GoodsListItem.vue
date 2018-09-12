@@ -3,7 +3,7 @@
     <div class="item-wrapper">
       <div class="item-img">
         <a href="javascript:void(0);">
-          <img src="./../../assets/logo.png">
+          <img src="@/assets/logo.png">
         </a>
       </div>
       <div class="item-price">
@@ -52,10 +52,9 @@
   </el-col>
 </template>
 <script>
-  import ElSlPanel from 'element-ui/packages/color-picker/src/components/sv-panel';
   export default {
     name: 'GoodsListItem',
-    components: { ElSlPanel }
+    components: {  }
   };
 </script>
 <style scoped>
