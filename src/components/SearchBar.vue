@@ -16,6 +16,5 @@
 <style scoped>
   .searchBar-wrapper {
     width: 80%;
-    padding-top: 30px;
   }
 </style>

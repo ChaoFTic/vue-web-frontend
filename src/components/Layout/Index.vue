@@ -1,31 +1,7 @@
 <template>
   <el-container>
-    <el-header height="auto">
-      <el-row>
-        <el-col :span="6">
-          <logo/>
-        </el-col>
-        <el-col :span="12">
-          <search-bar/>
-        </el-col>
-        <el-col :span="6">
-          <cart-button/>
-        </el-col>
-      </el-row>
-    </el-header>
-    <el-main>
-      <el-row class="goods-list">
-        <goods-list-item/>
-        <goods-list-item/>
-        <goods-list-item/>
-        <goods-list-item/>
-        <goods-list-item/>
-        <goods-list-item/>
-        <goods-list-item/>
-        <goods-list-item/>
-        <goods-list-item/>
-      </el-row>
-    </el-main>
+    <el-header style="background: #eaeaea;"></el-header>
+    <router-view/>
     <el-footer>
       <slogan/>
       <copyright/>
@@ -34,16 +10,14 @@
 </template>
 
 <script>
-  import Slogan from '@/components/Layout/Slogan';
+  import Slogan from '@/components/Slogan';
   import Copyright from '@/components/Layout/Copyright';
-  import SearchBar from '@/components/Layout/SearchBar';
-  import Logo from '@/components/Layout/Logo';
-  import CartButton from '@/components/Layout/CartButton';
-  import GoodsListItem from '@/components/Layout/GoodsListItem';
+  import Home from '@/views/Home';
 
   export default {
     name: 'Index',
-    components: { GoodsListItem, CartButton, Logo, SearchBar, Copyright, Slogan },
+    components: { Home, Copyright, Slogan },
+
   };
 </script>
 
@@ -53,5 +27,4 @@
     padding: 0;
     background: #eaeaea;
   }
-
 </style>

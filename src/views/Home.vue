@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <el-container>
+    <el-header height="auto">
+      <el-row>
+        <el-col :span="6">
+          <logo/>
+        </el-col>
+        <el-col :span="12">
+          <search-bar/>
+        </el-col>
+        <el-col :span="6">
+          <cart-button/>
+        </el-col>
+      </el-row>
+    </el-header>
+    <el-main>
+      <goods-list/>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+  import CartButton from '@/components/CartButton';
+  import GoodsList from '@/components/GoodsList/index';
+  import Logo from '@/components/Logo';
+  import SearchBar from '@/components/SearchBar';
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  export default {
+    name: 'Home',
+    components: { CartButton, GoodsList, Logo, SearchBar }
+  };
 </script>
+
+<style scoped>
+  .el-header .el-col {
+    margin-top: 30px;
+  }
+</style>

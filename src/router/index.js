@@ -1,15 +1,22 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: '',
+      component: () => import('@/components/Layout'),
+      children: [
+        {
+          path: '',
+          component: () => import('@/views/Home')
+        }, {
+          path: 'cart',
+          component: () => import('@/views/Cart')
+        }
+      ]
     },
     {
       path: '/about',
@@ -19,10 +26,5 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
     },
-    {
-      path: '/layout',
-      name: 'layout',
-      component: () => import('../components/Layout/Index')
-    }
   ]
-})
+});

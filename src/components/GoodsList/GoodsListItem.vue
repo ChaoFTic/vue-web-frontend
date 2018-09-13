@@ -3,34 +3,36 @@
     <div class="item-wrapper">
       <div class="item-img">
         <a href="javascript:void(0);">
-          <img src="@/assets/logo.png">
+          <img :src="item['image']">
         </a>
       </div>
       <div class="item-price">
         <strong>
           <em>￥</em>
-          <i>1399.00</i>
+          <i>{{ item['item_price'] }}</i>
         </strong>
       </div>
       <div class="item-title">
         <a title="title hover to see" href="javascript:void(0);" class="hover">
           <span>
-            title to be see
+            {{ item['item_name'] }}
           </span>
         </a>
       </div>
       <div class="item-company">
         <span>
-          <a href="javascript:void(0)" title="link to company">item's company</a>
-          <!--<el-button type="text" icon="el-icon-service"></el-button>-->
+          <a href="javascript:void(0)" title="link to company">
+            <span>
+              {{ item['item_company'] }}
+            </span>
+          </a>
           <a href="javascript:void(0);" title="chat with server">
             <el-icon name="service"></el-icon>
           </a>
         </span>
       </div>
       <div class="item-tags">
-        <el-tag size="mini">标签一</el-tag>
-        <el-tag size="mini">标签二</el-tag>
+        <el-tag v-for="(tag, index) in item['tags']" :key="index" size="mini">{{ tag }}</el-tag>
       </div>
       <div class="item-actions">
         <el-row>
@@ -41,9 +43,9 @@
             </el-button>
           </el-col>
           <el-col :span="12">
-            <el-button size="mini">
+            <el-button size="mini" @click="addToCart(item)">
               <v-icon name="cart-arrow-down" scale="1"></v-icon>
-              加入购物车
+              <span>加入购物车</span>
             </el-button>
           </el-col>
         </el-row>
@@ -52,11 +54,35 @@
   </el-col>
 </template>
 <script>
+  import { mapActions } from 'vuex'
+
   export default {
     name: 'GoodsListItem',
-    components: {  }
+    components: {  },
+
+    props: {
+      item: {
+        type: Object,
+        default() {
+          return {}
+        }
+      }
+    },
+
+    methods: {
+      ...mapActions([
+        'add_to_cart'
+      ]),
+      addToCart(item){
+        this.$store.dispatch('add_to_cart', item).then()
+          .catch(err => {
+          console.error(err);
+        })
+      }
+    }
   };
 </script>
+
 <style scoped>
   a {
     color: #666;
