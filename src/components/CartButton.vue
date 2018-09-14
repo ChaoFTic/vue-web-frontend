@@ -18,16 +18,7 @@
       </el-table>
       <el-row type="flex" justify="space-around" style="margin-top: 15px">
         <el-col :span="6">
-          <el-popover placement="top" trigger="click">
-            <p>确定清空购物车?</p>
-            <div style="text-align: right; margin: 0">
-              <el-button size="mini" type="text">取消</el-button>
-              <el-button type="primary" size="mini" @click="clear_cart">确定</el-button>
-            </div>
-            <template slot="reference">
-              <el-button :disabled="cart_total_price <= 0" type="danger">清空购物车</el-button>
-            </template>
-          </el-popover>
+          <el-button :disabled="cart_total_price <= 0" type="danger" @click="confirm_clear_cart">清空购物车</el-button>
         </el-col>
         <el-col :span="6">
           <router-link to="cart">
@@ -80,22 +71,24 @@
           });
         }
       },
-      /*confirm_clear_cart() {
+      confirm_clear_cart() {
         this.$confirm('确定清空购物车?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
-        }).then(() => {
+        })
+          .then(() => {
             this.$store.dispatch('clear_cart')
               .then(() =>
                 this.$message({
                   type: 'success',
                   message: '清空成功'
                 }));
-          }).catch(() => {
+          })
+          .catch(() => {
             // cancel clear cart
           });
-      },*/
+      },
 
     }
   };

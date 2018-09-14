@@ -1,6 +1,6 @@
 <template>
   <el-col :span="4" class="goods-list-item">
-    <div class="item-wrapper">
+    <el-card shadow="hover" class="item-wrapper">
       <div class="item-img">
         <a href="javascript:void(0);">
           <img :src="item['image']">
@@ -37,20 +37,20 @@
       <div class="item-actions">
         <el-row>
           <el-col :span="12">
-            <el-button size="mini" type="danger">
+            <el-button id="fav-button" size="mini" type="danger">
               <v-icon name="heart" scale="1"></v-icon>
               关注
             </el-button>
           </el-col>
           <el-col :span="12">
-            <el-button size="mini" @click="addToCart(item)">
+            <el-button id="add_button" size="mini" @click="addToCart(item)">
               <v-icon name="cart-arrow-down" scale="1"></v-icon>
               <span>加入购物车</span>
             </el-button>
           </el-col>
         </el-row>
       </div>
-    </div>
+    </el-card>
   </el-col>
 </template>
 <script>
@@ -74,7 +74,9 @@
         'add_to_cart'
       ]),
       addToCart(item){
-        this.$store.dispatch('add_to_cart', item).then()
+        console.log(this.$el);
+        this.$el.focus();
+        this.$store.dispatch('add_to_cart', item).then(() => {})
           .catch(err => {
           console.error(err);
         })
@@ -88,25 +90,45 @@
     color: #666;
     text-decoration: none;
   }
-  .goods-list-item {
-    margin-top: 10px;
-    padding-bottom: 10px;
-    border: 1px solid #fff;
+
+  .item-wrapper > div > div{
+    margin-bottom: 10px;
   }
 
-  .goods-list-item:hover {
-    border-color: #e9e9e9;
-    box-shadow: 0 0 2px 2px #f8f8f8;
+  .el-card {
+    margin-bottom: 40px;
+    border: none;
+  }
+  #add_button:focus{
+    color: #606266;
+    border-color: #dcdfe6;
+    background-color: #ffffff;
+  }
+  #add_button:hover{
+    color: #409EFF;
+    border-color: #c6e2ff;
+    background-color: #ecf5ff;
+  }
+  #add_button:active{
+    color: #3a8ee6;
+    border-color: #3a8ee6;
+    outline: 0;
   }
 
-  .item-wrapper {
-    padding-left: 10px;
-    padding-right: 10px;
+  #fav-button:focus{
+    color: #fff;
+    background-color: #f56c6c;
+    border-color: #f56c6c;
   }
-  .item-wrapper > div{
-    margin-top: 12px;
-    margin-bottom: 12px;
+  #fav-button:hover{
+    background: #f78989;
+    border-color: #f78989;
+    color: #fff;
   }
+  #fav-button:active{
+    outline: 0;
+  }
+
   .item-img {
     display: flex;
     justify-content: center;

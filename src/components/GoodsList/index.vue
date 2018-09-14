@@ -1,5 +1,5 @@
 <template>
-  <el-row class="goods-list">
+  <el-row :gutter="4" class="goods-list">
     <template v-for="(item, index) in goods">
       <goods-list-item
         :item="item"

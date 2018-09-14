@@ -9,7 +9,7 @@ export default {
         state.cart_items.push({
           ...item,
           'item_num': 1,
-          'item_selected': true
+          'item_selected': true,
         });
       } else {
         state.cart_items[item_idx].item_num++;

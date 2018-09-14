@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header height="auto">
-      <el-row>
+      <el-row type="flex" align="middle">
         <el-col :span="6">
           <logo/>
         </el-col>
@@ -32,7 +32,7 @@
 </script>
 
 <style scoped>
-  .el-header .el-col {
+  .el-header .el-row {
     margin-top: 30px;
   }
 </style>
