@@ -12,6 +12,7 @@ import 'vue-awesome/icons'
 import App from './App.vue'
 
 Vue.use(ElementUI);
+
 Vue.component('v-icon', Icon);
 
 Vue.config.productionTip = false;

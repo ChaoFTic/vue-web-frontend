@@ -15,6 +15,9 @@ export default new Router({
         }, {
           path: 'cart',
           component: () => import('@/views/Cart')
+        }, {
+          path: 'guide',
+          component: () => import('@/views/Guide')
         }
       ]
     },
