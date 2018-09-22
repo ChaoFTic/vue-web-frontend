@@ -38,13 +38,13 @@
         <el-row>
           <el-col :span="12">
             <el-button id="fav-button" size="mini" type="danger">
-              <v-icon name="heart" scale="1"></v-icon>
+              <fa-icon icon="heart"/>
               关注
             </el-button>
           </el-col>
           <el-col :span="12">
             <el-button id="add_button" size="mini" @click="addToCart(item)">
-              <v-icon name="cart-arrow-down" scale="1"></v-icon>
+              <fa-icon icon="cart-arrow-down"/>
               <span>加入购物车</span>
             </el-button>
           </el-col>
@@ -55,10 +55,11 @@
 </template>
 <script>
   import { mapActions } from 'vuex'
+  import FaIcon from '@/components/FaIcon';
 
   export default {
     name: 'GoodsListItem',
-    components: {  },
+    components: { FaIcon  },
 
     props: {
       item: {

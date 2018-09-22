@@ -12,7 +12,7 @@
     <div class="copyright-info">
       <p>
         <a href="javascript:void(0);">
-          <v-icon name="brands/github" scale="2"/>
+          <fa-icon icon="github"/>
           <span>ChaoFTic</span>
         </a>
       </p>
@@ -20,8 +20,10 @@
   </div>
 </template>
 <script>
+  import FaIcon from '@/components/FaIcon';
   export default {
-    name: 'Copyright'
+    name: 'Copyright',
+    components: { FaIcon }
   };
 </script>
 <style scoped>

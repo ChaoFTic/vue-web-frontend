@@ -17,7 +17,10 @@ export default new Router({
           component: () => import('@/views/Cart')
         }, {
           path: 'guide',
-          component: () => import('@/views/Guide')
+          component: () => import('@/components/map/EchartMap')
+        }, {
+          path: 'map',
+          component: () => import('@/components/map/FengMap')
         }
       ]
     },
