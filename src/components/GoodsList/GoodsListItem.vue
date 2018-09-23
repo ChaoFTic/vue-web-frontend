@@ -2,9 +2,10 @@
   <el-col :span="4" class="goods-list-item">
     <el-card shadow="hover" class="item-wrapper">
       <div class="item-img">
-        <a href="javascript:void(0);">
-          <img :src="item['image']">
-        </a>
+        <router-link :to="{ path: `item/${item.id}` }">
+          <img :src="item['image']" width="220px" height="220px">
+          <!--<img v-lazy.src="item['image']" :data-load="require('@/../../../static/item_default.png')">-->
+        </router-link>
       </div>
       <div class="item-price">
         <strong>
@@ -13,11 +14,12 @@
         </strong>
       </div>
       <div class="item-title">
-        <a title="title hover to see" href="javascript:void(0);" class="hover">
+        <router-link :to="{ path: `item/${item.id}` }" title="title hover to see" class="hover">
           <span>
             {{ item['item_name'] }}
           </span>
-        </a>
+        </router-link>
+
       </div>
       <div class="item-company">
         <span>
@@ -54,19 +56,32 @@
   </el-col>
 </template>
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions } from 'vuex';
   import FaIcon from '@/components/FaIcon';
 
   export default {
     name: 'GoodsListItem',
-    components: { FaIcon  },
+    components: { FaIcon },
 
     props: {
       item: {
         type: Object,
         default() {
-          return {}
+          return {};
         }
+      }
+    },
+
+    data() {
+      return {
+        // default_image: require('@/../../../static/item_default.png')
+      }
+    },
+
+    computed: {
+      errorImage() {
+        // return 'this.src="' + require('@/assets/') + '"'
+        return ''
       }
     },
 
@@ -74,25 +89,28 @@
       ...mapActions([
         'add_to_cart'
       ]),
-      addToCart(item){
+      addToCart(item) {
         console.log(this.$el);
         this.$el.focus();
-        this.$store.dispatch('add_to_cart', item).then(() => {})
+        this.$store.dispatch('add_to_cart', item)
+          .then(() => {
+          })
           .catch(err => {
-          console.error(err);
-        })
+            console.error(err);
+          });
       }
     }
   };
 </script>
 
 <style scoped>
+
   a {
     color: #666;
     text-decoration: none;
   }
 
-  .item-wrapper > div > div{
+  .item-wrapper > div > div {
     margin-bottom: 10px;
   }
 
@@ -100,38 +118,45 @@
     margin-bottom: 40px;
     border: none;
   }
-  #add_button:focus{
+
+  #add_button:focus {
     color: #606266;
     border-color: #dcdfe6;
     background-color: #ffffff;
   }
-  #add_button:hover{
+
+  #add_button:hover {
     color: #409EFF;
     border-color: #c6e2ff;
     background-color: #ecf5ff;
   }
-  #add_button:active{
+
+  #add_button:active {
     color: #3a8ee6;
     border-color: #3a8ee6;
     outline: 0;
   }
 
-  #fav-button:focus{
+  #fav-button:focus {
     color: #fff;
     background-color: #f56c6c;
     border-color: #f56c6c;
   }
-  #fav-button:hover{
+
+  #fav-button:hover {
     background: #f78989;
     border-color: #f78989;
     color: #fff;
   }
-  #fav-button:active{
+
+  #fav-button:active {
     outline: 0;
   }
 
   .item-img {
     display: flex;
     justify-content: center;
+
+    background: url("/static/item_default.png") no-repeat 0 0;
   }
 </style>

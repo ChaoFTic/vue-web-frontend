@@ -1,12 +1,20 @@
 <template>
   <div class="logo">
-    <a href="javascript:void(0);">
+    <router-link to="">
       <img width="100px" height="100px" src="@/assets/logo.png" alt="LOGO">
-    </a>
+    </router-link>
   </div>
 </template>
+
 <script>
   export default {
     name: 'Logo'
   };
 </script>
+
+<style scoped>
+  .logo {
+    display: flex;
+    justify-content: center;
+  }
+</style>

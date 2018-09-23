@@ -30,7 +30,7 @@
           </el-table-column>
           <el-table-column label="小计" property="item_price_sum">
             <template slot-scope="{ row }">
-              {{ (row['item_num'] * row['item_price']).toFixed(2) }}
+              {{ (row['item_num'] * row['item_price']).toFixed(2) }} 元
             </template>
           </el-table-column>
           <el-table-column width="100" label="操作" property="item_operator" fixed="right">

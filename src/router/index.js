@@ -21,6 +21,10 @@ export default new Router({
         }, {
           path: 'map',
           component: () => import('@/components/map/FengMap')
+        }, {
+          path: 'item/:id',
+          component: () => import('@/views/Item'),
+          props: true
         }
       ]
     },
